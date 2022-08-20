@@ -1,0 +1,29 @@
+package com.wipro.springboot.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@CrossOrigin
+@RestController
+public class ReportController {
+
+	private RestTemplate restTemplate = new RestTemplate();
+
+	@GetMapping("/report")
+	public String report() {
+		String uri = "http://localhost:8081/api/productall";
+		String responseMsg = restTemplate.getForObject(uri, String.class);
+		return responseMsg;
+
+	}
+	@GetMapping("/report1")
+	public String report1() {
+		String uri = "http://localhost:8081/api/orderall";
+		String responseMsg = restTemplate.getForObject(uri, String.class);
+		return responseMsg;
+
+	}
+
+}
